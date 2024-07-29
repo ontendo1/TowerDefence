@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6901273961892347536}
   - component: {fileID: 6322756959617425397}
   m_Layer: 0
-  m_Name: WeaponCatapult
+  m_Name: Catapult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

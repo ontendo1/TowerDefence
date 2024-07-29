@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -11,6 +12,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform projectileSpawnPoint;
     [SerializeField] protected Animator animator;
 
+    protected Vector3 direction;
+    protected float angleInDegrees
+    ;
     protected HashSet<Transform> enemiesInRange = new();
 
     protected int ANIM_SHOT_TRIGGER;
@@ -30,17 +34,30 @@ public class Weapon : MonoBehaviour
 
     public virtual void ShotProjectile()
     {
-       
+
     }
 
     IEnumerator ShootingCycle()
     {
         while (true)
         {
-
             yield return new WaitForSeconds(shotCycle);
 
             if (enemiesInRange.Count < 1) continue;
+
+            //Get target enemy; is first enemy in range.
+            Vector3 targetEnemyPosition = enemiesInRange.First().position;
+            
+            //Calculate target enemy's position:
+            float targetPosX = targetEnemyPosition.x - transform.position.x;
+            float targetPosZ = targetEnemyPosition.z - transform.position.z;
+
+            direction = new Vector3(targetPosX, 0, targetPosZ).normalized;
+
+            angleInDegrees = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+            //Turn to enemy
+            transform.rotation = Quaternion.Euler(Vector3.up * angleInDegrees);
 
             animator.SetTrigger(ANIM_SHOT_TRIGGER);
         }

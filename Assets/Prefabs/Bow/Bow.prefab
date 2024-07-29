@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1184962618132377738}
   - component: {fileID: 6881578405104154337}
   m_Layer: 0
-  m_Name: WeaponBow
+  m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c9afc02e6a95c4c9603e5b5d008a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 20
+  lifetime: 200
   shotCycle: 2
   projectilePrfb: {fileID: 5373968494090045261, guid: 89320d1c4ab88fc4abbc5d5794250a05,
     type: 3}

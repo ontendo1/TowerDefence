@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpec: {fileID: 11400000, guid: 5b5e797201ddbc742a1463363884a3a0, type: 2}
+  lifetime: 3.2
   direction: {x: 0, y: 0, z: 0}
   rb: {fileID: 8892526332696080852}
 --- !u!33 &617743733050986070
