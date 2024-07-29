@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -9,6 +10,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected GameObject projectilePrfb;
     [SerializeField] protected Transform projectileSpawnPoint;
     [SerializeField] protected Animator animator;
+
+    protected HashSet<Transform> enemiesInRange = new();
 
     protected int ANIM_SHOT_TRIGGER;
 
@@ -27,7 +30,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void ShotProjectile()
     {
-        print("fired a shot");
+       
     }
 
     IEnumerator ShootingCycle()
@@ -36,6 +39,8 @@ public class Weapon : MonoBehaviour
         {
 
             yield return new WaitForSeconds(shotCycle);
+
+            if (enemiesInRange.Count < 1) continue;
 
             animator.SetTrigger(ANIM_SHOT_TRIGGER);
         }
@@ -47,4 +52,24 @@ public class Weapon : MonoBehaviour
 
         gameObject.SetActive(false);
     }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemiesInRange.Add(other.transform);
+            print("Added");
+        }
+    }
+
+    protected virtual void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemiesInRange.Remove(other.transform);
+            print("Removed");
+        }
+    }
 }
+
+
