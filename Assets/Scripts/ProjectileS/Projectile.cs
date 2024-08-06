@@ -3,22 +3,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private ProjectileSpecSO projectileSpec;
-    [SerializeField] private float lifetime = 5;
+    [SerializeField] protected ProjectileSpecSO projectileSpec;
+    [SerializeField] protected float lifetime = 5;
     [HideInInspector] public Vector3 direction;
     public Rigidbody rb;
 
-    void Start()
+    protected virtual void Start()
     {
         StartCoroutine(LifetimeCountdown());
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = direction * projectileSpec.speed;
-    }
-
-    IEnumerator LifetimeCountdown()
+    protected virtual IEnumerator LifetimeCountdown()
     {
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
