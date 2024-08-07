@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class Catapult : Weapon
-{   
-    [SerializeField] private float liftoffSens;
+{
     protected override void Start()
     {
         base.Start();
@@ -15,10 +14,10 @@ public class Catapult : Weapon
         GameObject throwedBow = Instantiate(projectilePrfb, projectileSpawnPoint.position, Quaternion.Euler(Vector3.up * angleInDegrees));
 
         //Set direction and vertical force of catapult's heavy ball.
-        if (throwedBow.TryGetComponent(out Projectile projectile))
+        if (throwedBow.TryGetComponent(out ParabolicProjectile projectile))
         {
             projectile.direction = direction;
-            projectile.rb.AddForce(Mathf.Abs(distance) * liftoffSens * Vector2.up);
+            projectile.targetTransform = targetEnemy;
         }
     }
 

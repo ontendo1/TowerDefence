@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Catapult
   m_EditorClassIdentifier: 
   damage: 3
-  speed: 5.4
+  speed: 6
