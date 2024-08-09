@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b827bb3f6cf8b409c77df5879e93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objPoolName: Catapult
   projectileSpec: {fileID: 11400000, guid: 15291171f2e4dde4b83392567bdbd104, type: 2}
   lifetime: 5
   direction: {x: 0, y: 0, z: 0}

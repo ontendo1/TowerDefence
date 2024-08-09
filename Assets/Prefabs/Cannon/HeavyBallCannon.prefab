@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ed47e4d341abf4d855d6470094447b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objPoolName: Cannon
   projectileSpec: {fileID: 11400000, guid: 0367734ff2aa7f9408a8bc2c0bfa7c1c, type: 2}
   lifetime: 5
   direction: {x: 0, y: 0, z: 0}

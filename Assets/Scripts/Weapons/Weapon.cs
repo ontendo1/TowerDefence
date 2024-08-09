@@ -12,7 +12,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform projectileSpawnPoint;
     [SerializeField] protected Animator animator;
 
-
     protected Vector3 direction;
     protected Transform targetEnemy;
 
@@ -22,17 +21,16 @@ public class Weapon : MonoBehaviour
 
     protected int ANIM_SHOT_TRIGGER;
 
+    protected ObjectPoolManager objectPooler;
+
     protected virtual void Start()
     {
         ANIM_SHOT_TRIGGER = Animator.StringToHash("Shot");
 
         StartCoroutine(LifetimeTimer());
         StartCoroutine(ShootingCycle());
-    }
 
-    protected void FixedUpdate()
-    {
-
+        objectPooler = ObjectPoolManager.Instance;
     }
 
     public virtual void ShotProjectile()

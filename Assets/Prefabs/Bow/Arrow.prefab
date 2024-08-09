@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ed47e4d341abf4d855d6470094447b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objPoolName: Arrow
   projectileSpec: {fileID: 11400000, guid: 5b5e797201ddbc742a1463363884a3a0, type: 2}
   lifetime: 3.2
   direction: {x: 0, y: 0, z: 0}

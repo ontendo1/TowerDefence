@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ParabolicProjectile : Projectile
@@ -9,22 +8,26 @@ public class ParabolicProjectile : Projectile
     private float defaultDistance;
     private float defaultYPos;
 
-    bool isFalling = false;
-    protected override void Start()
-    {
-        base.Start();
+    private bool isFalling = false;
 
-        defaultYPos = rb.position.y;
+    public override void OnSpawn()
+    {
+        base.OnSpawn();
+
+        isFalling = false;
+
+        defaultYPos = transform.position.y;
+        calculatedArcHeight = 0;
 
         defaultDistance = Vector3.Distance(new(targetTransform.position.x, 0, targetTransform.position.z), new(transform.position.x, 0, transform.position.z));
     }
 
     void FixedUpdate()
     {
-        //Destroys game object when target is dead by other weapons.
+        //Destroys game object when other weapons are kill the target enemy before this bullet
         if (targetTransform == null)
         {
-            Destroy(gameObject);
+            objectPooler.AddToPool(objPoolName, gameObject);
             return;
         }
 
@@ -42,18 +45,18 @@ public class ParabolicProjectile : Projectile
 
         //Do parabolic effect with sin function.
         //parabolic effect is on the peak point when "distance / defaultDistance" = ~0.5f.
-        
-        calculatedArcHeight = Mathf.Sin(distance / defaultDistance * Mathf.PI) * arcHeight; 
+
+        calculatedArcHeight = Mathf.Sin(distance / defaultDistance * Mathf.PI) * arcHeight;
 
         //Compares the arc height in current frame with the arch height of lastest frame for determine it's increasing or decreasing.
-          
+
         if (Mathf.Abs(oldArcHeight) > Mathf.Abs(calculatedArcHeight) && !isFalling)
         {
             isFalling = true;
         }
         else if (isFalling && Mathf.Abs(oldArcHeight) < Mathf.Abs(calculatedArcHeight))
         {
-            Destroy(gameObject);
+            objectPooler.AddToPool(objPoolName, gameObject);
         }
 
         rb.position = new Vector3(rb.position.x, defaultYPos + calculatedArcHeight, rb.position.z);

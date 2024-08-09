@@ -11,13 +11,19 @@ public class Bow : Weapon
     {
         base.ShotProjectile();
 
-        //Throw arrow
-        GameObject throwedBow = Instantiate(projectilePrfb, projectileSpawnPoint.position, Quaternion.Euler(Vector3.up * angleInDegrees));
+        //Throw an arrow
+        GameObject throwedBow = objectPooler.SpawnFromPool("Arrow", projectileSpawnPoint.position, Quaternion.Euler(Vector3.up * angleInDegrees), projectilePrfb);
 
         //Set arrow's direction.
         if (throwedBow.TryGetComponent(out Projectile projectile))
         {
             projectile.direction = direction;
+        }
+
+        //Calls methods for reset object status in previous use. Makes the object brand new.
+        if (throwedBow.TryGetComponent(out IPoolableObject poolableObject))
+        {
+            poolableObject.OnSpawn();
         }
     }
 

@@ -11,13 +11,19 @@ public class Cannon : Weapon
     {
         base.ShotProjectile();
 
-        //Throw arrow
-        GameObject throwedBow = Instantiate(projectilePrfb, projectileSpawnPoint.position, Quaternion.identity);
+        //Throw a cannon
+        GameObject throwedCannon = objectPooler.SpawnFromPool("Cannon", projectileSpawnPoint.position, Quaternion.identity, projectilePrfb);
 
         //Set heavy ball's direction.
-        if (throwedBow.TryGetComponent(out Projectile projectile))
+        if (throwedCannon.TryGetComponent(out Projectile projectile))
         {
             projectile.direction = direction;
+        }
+
+        //Calls methods for reset object status in previous use. Makes the object brand new.
+        if (throwedCannon.TryGetComponent(out IPoolableObject poolableObject))
+        {
+            poolableObject.OnSpawn();
         }
     }
 

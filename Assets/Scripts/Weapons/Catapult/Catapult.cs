@@ -11,13 +11,19 @@ public class Catapult : Weapon
     {
         base.ShotProjectile();
 
-        GameObject throwedBow = Instantiate(projectilePrfb, projectileSpawnPoint.position, Quaternion.Euler(Vector3.up * angleInDegrees));
+        GameObject throwedBall = objectPooler.SpawnFromPool("Catapult", projectileSpawnPoint.position, Quaternion.Euler(Vector3.up * angleInDegrees), projectilePrfb);
 
         //Set direction and vertical force of catapult's heavy ball.
-        if (throwedBow.TryGetComponent(out ParabolicProjectile projectile))
+        if (throwedBall.TryGetComponent(out ParabolicProjectile projectile))
         {
             projectile.direction = direction;
             projectile.targetTransform = targetEnemy;
+        }
+
+        //Calls methods for reset object status in previous use. Makes the object brand new.
+        if (throwedBall.TryGetComponent(out IPoolableObject poolableObject))
+        {
+            poolableObject.OnSpawn();
         }
     }
 
