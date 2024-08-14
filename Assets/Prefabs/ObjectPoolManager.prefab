@@ -57,3 +57,7 @@ MonoBehaviour:
     prefab: {fileID: 5148091087701350935, guid: cac9736cdba48c346ae376328c3fd0e6,
       type: 3}
     size: 4
+  - name: Enemy
+    prefab: {fileID: 2757620607065396523, guid: 2ab31ee8baf7e7a43b43f4cb6d33a12f,
+      type: 3}
+    size: 16

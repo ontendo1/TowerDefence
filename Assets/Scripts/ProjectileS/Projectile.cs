@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IPoolableObject
 {
-    [SerializeField] protected string objPoolName; //Define object name for pooling.
+    public string objPoolName; //Define object name for pooling.
 
-    [SerializeField] protected ProjectileSpecSO projectileSpec;
+    public ProjectileSpecSO projectileSpec;
     [SerializeField] protected float lifetime = 5;
     [HideInInspector] public Vector3 direction;
     public Rigidbody rb;

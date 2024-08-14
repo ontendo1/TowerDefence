@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8803894416527405417}
   - component: {fileID: 7042851601778228861}
   - component: {fileID: 7829366051165437578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeavyBallCannon
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

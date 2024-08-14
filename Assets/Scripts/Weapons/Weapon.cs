@@ -15,9 +15,9 @@ public class Weapon : MonoBehaviour
     protected Vector3 direction;
     protected Transform targetEnemy;
 
-    protected float angleInDegrees
-    ;
-    protected HashSet<Transform> enemiesInRange = new();
+    protected float angleInDegrees;
+
+    protected List<Transform> enemiesInRange = new();
 
     protected int ANIM_SHOT_TRIGGER;
 
@@ -43,6 +43,9 @@ public class Weapon : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(shotCycle);
+
+            //Check the enemies in range is active or inactive
+            CheckActiveEnemiesInRange();
 
             if (enemiesInRange.Count < 1) continue;
 
@@ -71,12 +74,29 @@ public class Weapon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    void CheckActiveEnemiesInRange()
+    {
+        HashSet<Transform> inactiveEnemies = new();
+
+        foreach (Transform enemy in enemiesInRange)
+        {
+            if (!enemy.gameObject.activeSelf)
+            {
+                inactiveEnemies.Add(enemy);
+            }
+        }
+
+        foreach (Transform inactiveEnemy in inactiveEnemies)
+        {
+            enemiesInRange.Remove(inactiveEnemy);
+        }
+
+    }
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             enemiesInRange.Add(other.transform);
-            print("Added");
         }
     }
 
@@ -85,7 +105,6 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enemiesInRange.Remove(other.transform);
-            print("Removed");
         }
     }
 }

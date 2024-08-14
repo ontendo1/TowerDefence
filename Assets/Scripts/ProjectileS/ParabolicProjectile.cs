@@ -25,7 +25,7 @@ public class ParabolicProjectile : Projectile
     void FixedUpdate()
     {
         //Destroys game object when other weapons are kill the target enemy before this bullet
-        if (targetTransform == null)
+        if (!targetTransform.gameObject.activeSelf)
         {
             objectPooler.AddToPool(objPoolName, gameObject);
             return;
