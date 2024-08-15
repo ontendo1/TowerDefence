@@ -39,5 +39,10 @@ public class EnemyHealth : MonoBehaviour
                 Health -= projectile.projectileSpec.damage;
             }
         }
+        else if (other.CompareTag("Finish"))
+        {
+            Player.Instance.Health -= 1;
+            Health = 0;
+        }
     }
 }
