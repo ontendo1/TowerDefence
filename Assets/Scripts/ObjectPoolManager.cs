@@ -19,11 +19,6 @@ public class ObjectPoolManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(this);
         }
     }
 
