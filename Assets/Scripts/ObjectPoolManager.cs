@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ObjectPoolManager : MonoBehaviour
 {
@@ -58,6 +59,11 @@ public class ObjectPoolManager : MonoBehaviour
 
         objectToSpawn.transform.SetPositionAndRotation(position, rotation);
         objectToSpawn.SetActive(true);
+
+        if (objectToSpawn.TryGetComponent(out IPoolableObject poolableObject))
+        {
+            poolableObject.OnSpawn();
+        }
 
         return objectToSpawn;
     }

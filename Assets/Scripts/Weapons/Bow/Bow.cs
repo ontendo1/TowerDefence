@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class Bow : Weapon
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public override void ShotProjectile()
     {
         base.ShotProjectile();
@@ -18,12 +13,6 @@ public class Bow : Weapon
         if (throwedBow.TryGetComponent(out Projectile projectile))
         {
             projectile.direction = direction;
-        }
-
-        //Calls methods for reset object status in previous use. Makes the object brand new.
-        if (throwedBow.TryGetComponent(out IPoolableObject poolableObject))
-        {
-            poolableObject.OnSpawn();
         }
     }
 

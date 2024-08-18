@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text currencyText;
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text gameOverScoreText;
 
     [Space(6)]
     [SerializeField] private PlayState playState;
@@ -30,6 +31,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject buyWeaponButtons;
 
+    [Space(6)]
+    [Header("Economy")]
+    [SerializeField] private int bowPrice = 20;
+    [SerializeField] private int catapultPrice = 30;
+    [SerializeField] private int cannonPrice = 50;
+
+
     private WeaponType selectedWeapon;
     private GameObject weaponIndicator;
     private Camera _mainCamera;
@@ -48,6 +56,7 @@ public class Player : MonoBehaviour
             if (_health <= 0)
             {
                 gameOverPanel.SetActive(true);
+                gameOverScoreText.text = "YOUR SCORE: " + Score;
                 Time.timeScale = 0;
             }
         }
@@ -73,7 +82,7 @@ public class Player : MonoBehaviour
         set
         {
             _currency = value;
-            currencyText.text = "Currency: " + _currency;
+            currencyText.text = "Currency: " + _currency + "$";
         }
     }
 
@@ -155,6 +164,7 @@ public class Player : MonoBehaviour
                     weapon.placementValidator = weaponPlacementValidator;
                 }
 
+                ReduceThePrice();
                 ReturnToIdleState();
             }
 
@@ -177,7 +187,7 @@ public class Player : MonoBehaviour
         playState = PlayState.Idle;
         buyWeaponButtons.SetActive(true);
     }
-    
+
     public enum PlayState
     {
         Idle,
@@ -227,20 +237,36 @@ public class Player : MonoBehaviour
 
     public void BuyBow()
     {
+        if (Currency < bowPrice) return;
+
         selectedWeapon = WeaponType.Bow;
         InstantiateWeaponIndicator();
     }
 
     public void BuyCatapult()
     {
+        if (Currency < catapultPrice) return;
+
         selectedWeapon = WeaponType.Catapult;
         InstantiateWeaponIndicator();
     }
 
     public void BuyCannon()
     {
+        if (Currency < cannonPrice) return;
+
         selectedWeapon = WeaponType.Cannon;
         InstantiateWeaponIndicator();
+    }
+
+    public void ReduceThePrice()
+    {
+        switch (selectedWeapon)
+        {
+            case WeaponType.Bow: Currency -= bowPrice; break;
+            case WeaponType.Catapult: Currency -= catapultPrice; break;
+            case WeaponType.Cannon: Currency -= cannonPrice; break;
+        }
     }
 
     #endregion

@@ -10,10 +10,8 @@ public class ParabolicProjectile : Projectile
 
     private bool isFalling = false;
 
-    public override void OnSpawn()
+    public void OnThrowed()
     {
-        base.OnSpawn();
-
         isFalling = false;
 
         defaultYPos = transform.position.y;

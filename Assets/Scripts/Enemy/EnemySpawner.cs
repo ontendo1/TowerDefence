@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [Space(6)]
     [Header("Health")]
     [SerializeField] private float defaultHealthValue;
-    [SerializeField] private float healthValueIncreaseSens;
+    [SerializeField] private float healthValueIncreaseSens; //Incresase rate of enemy health to make game more difficult.
 
     void Start()
     {

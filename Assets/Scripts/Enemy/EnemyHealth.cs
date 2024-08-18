@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
             if (_health <= 0)
             {
                 Player.Instance.Score += Mathf.FloorToInt(defaultHealth);
+                Player.Instance.Currency++;
 
                 ObjectPoolManager.Instance.AddToPool("Enemy", gameObject);
 

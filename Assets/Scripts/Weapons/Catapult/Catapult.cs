@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class Catapult : Weapon
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     public override void ShotProjectile()
     {
         base.ShotProjectile();
@@ -18,12 +13,7 @@ public class Catapult : Weapon
         {
             projectile.direction = direction;
             projectile.targetTransform = targetEnemy;
-        }
-
-        //Calls methods for reset object status in previous use. Makes the object brand new.
-        if (throwedBall.TryGetComponent(out IPoolableObject poolableObject))
-        {
-            poolableObject.OnSpawn();
+            projectile.OnThrowed();
         }
     }
 

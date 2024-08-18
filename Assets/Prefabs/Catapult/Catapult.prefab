@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826729e3adb83a34f8016e6b6ba196c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 120
-  shotCycle: 2
+  lifetime: 126
+  shotCycle: 1.9
   weaponName: CatapultWeapon
   projectilePrfb: {fileID: 5148091087701350935, guid: cac9736cdba48c346ae376328c3fd0e6,
     type: 3}

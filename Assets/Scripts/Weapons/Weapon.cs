@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, IPoolableObject
 {
     public float lifetime = 10;
     public float shotCycle = 4;
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
 
     [HideInInspector] public WeaponPlacementValidator placementValidator;
 
-    protected virtual void Start()
+    public virtual void OnSpawn()
     {
         ANIM_SHOT_TRIGGER = Animator.StringToHash("Shot");
 
@@ -35,6 +35,9 @@ public class Weapon : MonoBehaviour
         StartCoroutine(ShootingCycle());
 
         objectPooler = ObjectPoolManager.Instance;
+
+        enemiesInRange.Clear();
+        animator.ResetTrigger(ANIM_SHOT_TRIGGER);
     }
 
     public virtual void ShotProjectile()
