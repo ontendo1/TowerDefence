@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826729e3adb83a34f8016e6b6ba196c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 126
-  shotCycle: 1.9
+  lifetime: 150
+  shotCycle: 1.6
   weaponName: CatapultWeapon
   projectilePrfb: {fileID: 5148091087701350935, guid: cac9736cdba48c346ae376328c3fd0e6,
     type: 3}
@@ -139,7 +139,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 2.2
   m_Center: {x: 0, y: 0.07874044, z: 0}
 --- !u!33 &6901273961892347536
 MeshFilter:

@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b1be8de0a2cfd48a1d165b9e136f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 132
-  shotCycle: 1.8
+  lifetime: 200
+  shotCycle: 2.4
   weaponName: CannonWeapon
   projectilePrfb: {fileID: 7255459510476851932, guid: e897a9e587c3e074cbaf7f392a5eb698,
     type: 3}
@@ -108,7 +108,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1.8
   m_Center: {x: 0, y: 0.07874044, z: 0}
 --- !u!33 &2141841384322491667
 MeshFilter:

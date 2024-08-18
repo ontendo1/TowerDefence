@@ -135,8 +135,9 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region FixedUpdate
-    void FixedUpdate()
+    #region Update
+
+    void Update()
     {
         if (playState == PlayState.SelectingWeapon)
         {

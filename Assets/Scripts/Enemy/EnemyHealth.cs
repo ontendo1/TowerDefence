@@ -20,18 +20,20 @@ public class EnemyHealth : MonoBehaviour
             if (_health <= 0)
             {
                 Player.Instance.Score += Mathf.FloorToInt(defaultHealth);
-                Player.Instance.Currency++;
-
-                ObjectPoolManager.Instance.AddToPool("Enemy", gameObject);
-
-                if (gameObject.TryGetComponent(out PathFollower pathFollower))
-                {
-                    Destroy(pathFollower);
-                }
+                DeactivateSelf();
             }
         }
     }
 
+    void DeactivateSelf()
+    {
+        ObjectPoolManager.Instance.AddToPool("Enemy", gameObject);
+
+        if (gameObject.TryGetComponent(out PathFollower pathFollower))
+        {
+            Destroy(pathFollower);
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Projectile"))
@@ -45,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
         else if (other.CompareTag("Finish"))
         {
             Player.Instance.Health -= 1;
-            Health = 0;
+            DeactivateSelf();
         }
     }
 }

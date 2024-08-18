@@ -6728,7 +6728,7 @@ MonoBehaviour:
   path: {fileID: 1791415683020185223}
   enemySpeed: 1
   defaultHealthValue: 10
-  healthValueIncreaseSens: 0.5
+  healthValueIncreaseSens: 0.4
 --- !u!1001 &183937045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9037,7 +9037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cannon 50$
+  m_text: Cannon 45$
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23608,12 +23608,12 @@ MonoBehaviour:
   catapultIndicatorObj: {fileID: 1377064105}
   cannonIndicatorObj: {fileID: 381854729}
   defaultHealth: 10
-  defaultCurrency: 25
+  defaultCurrency: 10
   gameOverPanel: {fileID: 1124837872}
   buyWeaponButtons: {fileID: 1417303984}
   bowPrice: 20
   catapultPrice: 30
-  cannonPrice: 50
+  cannonPrice: 45
 --- !u!4 &681763678
 Transform:
   m_ObjectHideFlags: 0
@@ -76880,7 +76880,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1
