@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c9afc02e6a95c4c9603e5b5d008a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 100
+  lifetime: 120
   shotCycle: 0.8
   weaponName: BowWeapon
   projectilePrfb: {fileID: 5373968494090045261, guid: 89320d1c4ab88fc4abbc5d5794250a05,
