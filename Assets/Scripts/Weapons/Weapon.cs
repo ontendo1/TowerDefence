@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public float lifetime = 10;
     public float shotCycle = 4;
 
+    [Space(4)]
+    [SerializeField] protected string weaponName;
     [SerializeField] protected GameObject projectilePrfb;
     [SerializeField] protected Transform projectileSpawnPoint;
     [SerializeField] protected Animator animator;
@@ -22,6 +24,8 @@ public class Weapon : MonoBehaviour
     protected int ANIM_SHOT_TRIGGER;
 
     protected ObjectPoolManager objectPooler;
+
+    [HideInInspector] public WeaponPlacementValidator placementValidator;
 
     protected virtual void Start()
     {
@@ -71,7 +75,8 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(lifetime);
 
-        gameObject.SetActive(false);
+        Destroy(placementValidator); //Removes placement validator component from the placed grid.
+        objectPooler.AddToPool(weaponName, gameObject);
     }
 
     void CheckActiveEnemiesInRange()

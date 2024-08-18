@@ -61,3 +61,15 @@ MonoBehaviour:
     prefab: {fileID: 2757620607065396523, guid: 2ab31ee8baf7e7a43b43f4cb6d33a12f,
       type: 3}
     size: 16
+  - name: CatapultWeapon
+    prefab: {fileID: 7356424087524095588, guid: dcc3b0c1ac898f942970d2dcf0a5ca15,
+      type: 3}
+    size: 6
+  - name: CannonWeapon
+    prefab: {fileID: 4329711443179264771, guid: 16395707bbe53624cb08fc0d8971401a,
+      type: 3}
+    size: 6
+  - name: BowWeapon
+    prefab: {fileID: 7633380564961081163, guid: 5ef571780dcebf34c9894fc768a36a8e,
+      type: 3}
+    size: 6
